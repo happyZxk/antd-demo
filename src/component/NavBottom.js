@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 
 class NavBottom extends React.Component {
     constructor(props, context) {
-        super(props, conte)
+        super(props, context)
     }
 
     render() {

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 class Mycourse extends React.Component {
     constructor(props, context) {
-        super(props, conte)
+        super(props, context)
     }
 
     render() {

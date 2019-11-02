@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {HashRouter, Route, Switch, Redirct} from 'react-router-dom';
+import {HashRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {ConfigProvider} from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 // import Home from '../pages/Home'
