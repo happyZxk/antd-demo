@@ -1,36 +1,11 @@
 import axios from 'axios';
 import qs from 'qs';
-// 通过NODE_ENV来设置环境变量，如果没有指定则默认为生产环境
-var env = process.env.NODE_ENV || 'production';
-env = env.toLowerCase();
-axios.defaults.baseURL = env == 'development' ? 'http://127.0.0.1:3003/' : 'http://shuchao.ddbb.jpl56.com/';//服务器或者你项目的后台接口地址
-axios.defaults.withCredentials = true;//允许请求头携带cookie
-let http = {
-    post: '',
-    get: ''
-}
-http.get = function (api, data) {
-    let params = qs.stringify(data);
-    return new Promise((resolve, reject) => {
-        axios.get(api, params)
-            .then(res => {
-                resolve(res);
-            })
-            .catch(res => {
-                reject(res);
-            })
-    })
-}
-http.post = function (api, data) {
-    let params = qs.stringify(data);
-    return new Promise((resolve, reject) => {
-        axios.post(api, params)
-            .then(res => {
-                resolve(res)
-            })
-            .catch((res) => {
-                reject(res)
-            })
-    })
-}
-export default http;
+
+axios.defaults.baseURL = 'http://127.0.0.1:3003/';
+//服务器或者你项目的后台接口地址
+axios.defaults.withCredentials = true;//允许跨域请求头携带cookie
+//POST /PUT 请求主体传递给服务器的内容统一处理为X-WWW-URL-ENCODED格式
+axios.defaults.transformRequest = (data = {}) => qs.stringify(data);
+// 相应拦截器:把服务器返回的信息中响应主体内容拦截返回,以后再THEN中获取的结果就是主题内容
+axios.interceptors.response.use(result => result.data);
+export default axios;
