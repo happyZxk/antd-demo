@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
-axios.defaults.baseURL = 'http://127.0.0.1:3003/';
+axios.defaults.baseURL = 'http://localhost:8000/';
 //服务器或者你项目的后台接口地址
 axios.defaults.withCredentials = true;//允许跨域请求头携带cookie
 //POST /PUT 请求主体传递给服务器的内容统一处理为X-WWW-URL-ENCODED格式

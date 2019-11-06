@@ -20,12 +20,11 @@ export default class RoutingMatching extends Component {
               <NavTop />
               <main className='container'>
                 <Switch>
-                  <Route path="/course" exact component={Home}></Route>
-                  <Route path="/mycourse" exact component={Mycourse}></Route>
-                  <Route path="/person"  component={Person}></Route>
-                  <Redirect from="/"
-                            to="/course" />{/*<Redirect to="/course"/>*/}
-                  <Redirect to="/?from=404"></Redirect>
+                  <Route path="/course" component={Home}></Route>
+                  <Route path="/mycourse" component={Mycourse}></Route>
+                  <Route path="/person" component={Person}></Route>
+                  <Redirect to="/course"/>{/*<Redirect from="/"
+                            to="/course" />*/}
                 </Switch>
               </main>
               <NavBottom />

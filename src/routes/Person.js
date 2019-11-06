@@ -21,10 +21,9 @@ class Person extends React.Component {
 
 //=> 验证是否登录
   async componentWillMount() {
-    let isLogin = 1 === 0 ? true : false;
-    this.setState({
-      isLogin,
-    });
+    let result = await checkLogin(),
+      isLogin = parseFloat(result.code) === 0 ? true : false;
+    this.setState({isLogin});
   }
 
   render() {
@@ -32,14 +31,15 @@ class Person extends React.Component {
       <Switch>
         {/*路由的校验是同步的不允许在校验中出现异步，因为这样在异步没有完成之前根本不知道怎么渲染，语法不支持这样的操作*/}
         <Route path='/person/info' render={() => {
+          //=>基于RENDER返回的组件不是受路由管控的组件
           if (this.state.isLogin) {
-            return <Info />;
+            return <Info/>;
           }
-          return <Tip />;
-        }} />
-        <Route path='/person/login' component={Login} />
-        <Route path='/person/register' component={Register} />
-        <Redirect from='/person' to='/person/info' />
+          return <Tip/>;
+        }}/>
+        <Route path='/person/login' component={Login}/>
+        <Route path='/person/register' component={Register}/>
+        <Redirect from='/person' to='/person/info'/>
       </Switch>
     </section>;
   }
